@@ -1,3 +1,4 @@
+import { AlertifyService } from './alertify.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,12 +13,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import { RegisterComponent } from './views/login/register/register.component';
 import {UserServiceService} from './views/user-service.service';
 import { AuthService } from './views/login/auth.service';
+import { NavBarComponent } from './nav-bar/nav-bar/nav-bar.component';
+import {MenubarModule} from 'primeng/menubar';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +33,10 @@ import { AuthService } from './views/login/auth.service';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    MenubarModule
     
   ],
-  providers: [UserServiceService, AuthService],
+  providers: [UserServiceService, AuthService, AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

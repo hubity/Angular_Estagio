@@ -8,8 +8,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const app_routes: Routes = [
     {path: 'register', component: RegisterComponent},
-    {path: 'login', component: LoginComponent},
-    {path: '/', component: LoginComponent}
+    {path: '', component: LoginComponent},
+    {path: 'login', component: AppComponent}
 ];
 
 @NgModule({

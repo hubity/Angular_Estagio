@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Users} from './users';
 import {AuthService} from './auth.service';
+import { AlertifyService } from './../../alertify.service';
+import { Router} from '@angular/router';
 
 import { NgForm } from '@angular/forms';
+import {MenuItem} from 'primeng/api';
+
 
 @Component({
   selector: 'app-login',
@@ -11,8 +15,10 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   
+  items: MenuItem[];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertity: AlertifyService, 
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,11 +28,11 @@ export class LoginComponent implements OnInit {
     const token = this.authService.authUser(loginForm.value);
     if(token){
       localStorage.setItem('token', token.userName);
-      console.log('login sucessful');
+      this.alertity.success('login sucessful');
+      this.router.navigate(['login']);
     }else{
-      console.log('login not sucessful');
+      this.alertity.error('login not sucessful');
     }
-
 
   }
 }

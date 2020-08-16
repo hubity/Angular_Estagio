@@ -1,8 +1,9 @@
+import { AlertifyService } from './../../../alertify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {UserServiceService} from 'src/app/views/user-service.service';
 import {User} from 'src/app/model/user';
-
+   
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +14,9 @@ export class RegisterComponent implements OnInit {
   registerationForm: FormGroup;
   user: User;
   userSubmitted: boolean;
-  constructor(private fb: FormBuilder, private userService: UserServiceService) { }
+  constructor(private fb: FormBuilder, 
+              private userService: UserServiceService,
+              private alertity: AlertifyService) { }
 
   ngOnInit() {
     // this.registerationForm = new FormGroup({
@@ -48,6 +51,7 @@ export class RegisterComponent implements OnInit {
       this.userService.addUser(this.userData());
       this.registerationForm.reset();
       this.userSubmitted = false;
+      this.alertity.success("you are successfully registered");
   //  }
   }
 

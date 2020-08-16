@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AlertifyService } from './alertify.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,13 +16,15 @@ import {UserServiceService} from './views/user-service.service';
 import { AuthService } from './views/login/auth.service';
 import { NavBarComponent } from './nav-bar/nav-bar/nav-bar.component';
 import {MenubarModule} from 'primeng/menubar';
-
+import {HttpClientModule} from '@angular/common/http';
+import { CrudComponent } from './components/crud/crud.component'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     NavBarComponent,
+    CrudComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +36,11 @@ import {MenubarModule} from 'primeng/menubar';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    MenubarModule
+    MenubarModule,
+    HttpClientModule
     
   ],
-  providers: [UserServiceService, AuthService, AlertifyService],
+  providers: [UserServiceService, AuthService, AlertifyService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

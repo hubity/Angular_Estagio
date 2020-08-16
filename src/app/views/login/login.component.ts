@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if(token){
       localStorage.setItem('token', token.userName);
       this.alertity.success('login sucessful');
-      this.router.navigate(['login']);
+      this.router.navigate(['products']);
     }else{
       this.alertity.error('login not sucessful');
     }
